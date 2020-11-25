@@ -1,6 +1,5 @@
 package com.learning2code.spring;
 
-import com.learning2code.spring.model.Music;
 import com.learning2code.spring.view.MusicPlayer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,7 +17,7 @@ public class Main {
 //        MusicPlayer musicPlayer = new MusicPlayer(music);
 //      --> ~(IoC) Spring first of all creates musicBean than creates and injects it to musicPlayer bean
 //              depending what bean name we will use vvvvvvvvvvvvvvvv that bean will be got.
-        MusicPlayer player = context.getBean("musicPlayerConstructorAllArgs", MusicPlayer.class);
+        MusicPlayer player = context.getBean("musicPlayerSetterWithProperty", MusicPlayer.class);
         player.playMusic();
         System.out.println(player.getName());
         System.out.println(player.getVolume());
