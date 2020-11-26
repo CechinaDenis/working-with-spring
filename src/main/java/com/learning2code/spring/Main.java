@@ -22,6 +22,7 @@ public class Main {
         playerSingleton1.playAllMusic();
         System.out.println(playerSingleton1.getName());
         System.out.println(playerSingleton1.getVolume());
+//        Comparing Singleton and Prototype scope
         System.out.println("Singleton scope enable; 2 obj gotten from the context are the same? -> "
                 + (playerSingleton1 == playerSingleton2));
         MusicPlayer player1 = context.getBean("musicPlayerConstructorAllArgsPrototype", MusicPlayer.class);
