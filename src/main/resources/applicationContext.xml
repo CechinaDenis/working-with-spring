@@ -10,6 +10,10 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <bean id="musicBean" class="com.learning2code.spring.model.ClassicMusic"/>
+    <bean id="classicMusicBean" class="com.learning2code.spring.model.ClassicMusic"/>
+    <bean id="rockMusicBean" class="com.learning2code.spring.model.RockMusic"/>
+    <bean id="tranceMusicBean" class="com.learning2code.spring.model.TranceMusic"/>
+
     <bean id="musicPlayerConstructor" class="com.learning2code.spring.view.MusicPlayer">
         <constructor-arg ref="musicBean"/>
     </bean>
@@ -28,4 +32,22 @@
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
+    <bean id="musicPlayerConstructorListArgs" class="com.learning2code.spring.view.MusicPlayer">
+        <constructor-arg name="musicList">
+            <list>
+                <ref bean="classicMusicBean"/>
+                <ref bean="rockMusicBean"/>
+                <ref bean="tranceMusicBean"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg value="${musicPlayer.name}"/>
+        <constructor-arg value="${musicPlayer.volume}"/>
+    </bean>
+    <bean id="musicPlayerConstructorAllArgsPrototype" class="com.learning2code.spring.view.MusicPlayer"
+          scope="prototype">
+        <constructor-arg ref="musicBean"/>
+        <constructor-arg value="${musicPlayer.name}"/>
+        <constructor-arg value="${musicPlayer.volume}"/>
+    </bean>
+
 </beans>
