@@ -1,5 +1,6 @@
 package com.learning2code.spring;
 
+import com.learning2code.spring.model.Music;
 import com.learning2code.spring.view.MusicPlayer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -29,6 +30,10 @@ public class Main {
         MusicPlayer player2 = context.getBean("musicPlayerConstructorAllArgsPrototype", MusicPlayer.class);
         System.out.println("Prototype scope enable; 2 obj gotten from the context are the same? -> "
                 + (player1 == player2));
+//        No matter what the init-method & destroy-method will be executed because when bean is created and destroyed
+//        this tow methods are executed
+        Music music = context.getBean("initialMusicBean", Music.class);
+        System.out.println(music.getSong());
 
         context.close();
     }

@@ -9,26 +9,30 @@
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="musicBean" class="com.learning2code.spring.model.ClassicMusic"/>
     <bean id="classicMusicBean" class="com.learning2code.spring.model.ClassicMusic"/>
     <bean id="rockMusicBean" class="com.learning2code.spring.model.RockMusic"/>
     <bean id="tranceMusicBean" class="com.learning2code.spring.model.TranceMusic"/>
+    <bean id="initialMusicBean"
+          class="com.learning2code.spring.model.InitialMusic"
+          init-method="doInitMethod"
+          destroy-method="doDestroyMethod">
+    </bean>
 
     <bean id="musicPlayerConstructor" class="com.learning2code.spring.view.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+        <constructor-arg ref="classicMusicBean"/>
     </bean>
     <bean id="musicPlayerConstructorAllArgs" class="com.learning2code.spring.view.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+        <constructor-arg ref="classicMusicBean"/>
         <constructor-arg value="Name the name"/>
         <constructor-arg value="55"/>
     </bean>
     <bean id="musicPlayerSetter" class="com.learning2code.spring.view.MusicPlayer">
-        <property name="music" ref="musicBean"/>
+        <property name="music" ref="classicMusicBean"/>
         <property name="name" value="Name of the track"/>
         <property name="volume" value="52"/>
     </bean>
     <bean id="musicPlayerSetterWithProperty" class="com.learning2code.spring.view.MusicPlayer">
-        <property name="music" ref="musicBean"/>
+        <property name="music" ref="classicMusicBean"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
@@ -43,9 +47,10 @@
         <constructor-arg value="${musicPlayer.name}"/>
         <constructor-arg value="${musicPlayer.volume}"/>
     </bean>
-    <bean id="musicPlayerConstructorAllArgsPrototype" class="com.learning2code.spring.view.MusicPlayer"
+    <bean id="musicPlayerConstructorAllArgsPrototype"
+          class="com.learning2code.spring.view.MusicPlayer"
           scope="prototype">
-        <constructor-arg ref="musicBean"/>
+        <constructor-arg ref="classicMusicBean"/>
         <constructor-arg value="${musicPlayer.name}"/>
         <constructor-arg value="${musicPlayer.volume}"/>
     </bean>
