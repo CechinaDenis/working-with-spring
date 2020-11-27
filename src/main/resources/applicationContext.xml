@@ -18,7 +18,8 @@
           destroy-method="doDestroyMethod">
     </bean>
 
-    <bean id="musicPlayerConstructor" class="com.learning2code.spring.view.MusicPlayer">
+    <bean id="musicPlayerConstructor"
+          class="com.learning2code.spring.view.MusicPlayer">
         <constructor-arg ref="classicMusicBean"/>
     </bean>
     <bean id="musicPlayerConstructorAllArgs" class="com.learning2code.spring.view.MusicPlayer">
