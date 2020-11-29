@@ -31,9 +31,12 @@ public class Main {
         System.out.println("Prototype scope enable; 2 obj gotten from the context are the same? -> "
                 + (player1 == player2));
 //        No matter what the init-method & destroy-method will be executed because when bean is created and destroyed
-//        this tow methods are executed
+//        this tow methods are executed but in prototype bean the destroy-method will not be executed!!!!!
         Music music = context.getBean("initialMusicBean", Music.class);
         System.out.println(music.getSong());
+//        Creating new bean with factory-method
+        Music factoryMethodMusicBean = context.getBean("factoryMethodMusicBean", Music.class);
+        System.out.println(factoryMethodMusicBean.getSong());
 
         context.close();
     }
